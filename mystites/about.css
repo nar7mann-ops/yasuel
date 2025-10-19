@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌑 Чёрный фон при загрузке */
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  background-color: #000;
+  transition: background-color 0.6s ease;
+}
+
+/* 🎥 Видео фон */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.55) saturate(1.2);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+/* ✨ Слой для блёсток */
+#sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* между видео и контентом */
+  pointer-events: none;
+}
+
+#bg-video.loaded {
+  opacity: 1;
+}
+
+/* Контейнер */
+.container {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeIn 1.5s ease;
+  padding: 0 20px;
+}
+
+/* Заголовок */
+.title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 3em;
+  text-shadow: 0 0 15px #ffb3ff, 0 0 40px #cc66ff;
+  margin-bottom: 30px;
+}
+
+/* Текст */
+.text {
+  font-size: 1.2em;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 25px 35px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  line-height: 1.6;
+  text-shadow: 0 0 10px rgba(255, 180, 255, 0.3);
+  animation: shimmer 3s infinite ease-in-out;
+}
+
+/* Кнопка "Назад" */
+.back-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #8e2de2, #4a00e0);
+  color: white;
+  font-size: 1.1em;
+  padding: 14px 50px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(150, 100, 255, 0.8);
+  transition: all 0.4s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px #b366ff, 0 0 70px #8e2de2;
+}
+
+/* Эффект мерцания */
+@keyframes shimmer {
+  0%, 100% { text-shadow: 0 0 10px rgba(255, 180, 255, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(255, 150, 255, 0.8); }
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-60%); }
+  to { opacity: 1; transform: translateY(-50%); }
+}
+
+/* 📱 Адаптив */
+@media (max-width: 600px) {
+  .title { font-size: 2.2em; }
+  .text { font-size: 1em; padding: 20px; }
+  .back-btn { padding: 12px 40px; font-size: 1em; }
+}
